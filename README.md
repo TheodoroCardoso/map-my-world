@@ -1,14 +1,12 @@
 [![Udacity - Robotics NanoDegree Program](https://s3-us-west-1.amazonaws.com/udacity-robotics/Extra+Images/RoboND_flag.png)](https://www.udacity.com/robotics)
-# robo-nd-project3
+# robo-nd-project4
 
-Where Am I? - 3rd project for Robotics Software Engineer Nanodegree @Udacity
+Map My World - 4th project for Robotics Software Engineer Nanodegree @Udacity
 
-This project uses the Adaptative Monte Carlo Localization package to localize a differential drive mobile robot in a 4x2 meters performance environment.
+This project uses the RTABmap ros package to map a 4x2 meters performance environment.
 
 The Gazebo world design intends to replicate the **WorldSkills Mobile Robotics** next challange in a simplified version.
 For more information please take a look on a brief competition overview at the end.
-
-![alt text](https://github.com/TheodoroCardoso/robo-nd-project3/blob/main/Localized%20Robot.png)
 
 ## How to Launch the simulation?
 
@@ -24,7 +22,7 @@ $ cd ..
 #### Clone the package in catkin_ws/src/
 ```sh
 $ cd /home/workspace/catkin_ws/src/
-$ git clone https://github.com/TheodoroCardoso/robo-nd-project3.git
+$ git clone https://github.com/TheodoroCardoso/map-my-world.git
 ```
 
 #### Build the packages
@@ -39,20 +37,31 @@ $ cd /home/workspace/catkin_ws/
 $ source devel/setup.bash
 ```
 
-#### Once `my_robot` package has been built, you can launch the simulation environment using
+#### Once packages have been built, you can launch the simulation environment using
 ```sh
 $ roslaunch my_robot world.launch
 ```
 
-#### To run the AMCL algorithm
+#### To move the robot around using the keyboard
 Open a new terminal and type the following:
 ```sh
 $ cd /home/workspace/catkin_ws/
 $ source devel/setup.bash
-$ roslaunch my_robot amcl.launch
+$ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 
-#### That's it! Now just give the robot a 2D Nav Goal using Rviz and watch the localization process.
+#### Finally, to start mapping
+Open a new terminal and type the following:
+```sh
+$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch my_robot mapping.launch
+```
+
+#### That's it! Now just roam around the performance environment and then check the map database file.
+```sh
+$ rtabmap-databaseViewer ~/.ros/rtabmap.db
+```
 ----
 
 ## Learn more about WorldSkills
